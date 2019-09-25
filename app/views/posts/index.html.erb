@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<!-- changed this to table hover, if it fails change back to just class="table" -->
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Blog entry</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.user.email %></td>
+        <td><%= post.blog_entry %></td>
+        <td><%= link_to 'Show', post, class: "btn btn-success" %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>
